@@ -7,28 +7,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(title: 'The Antoha MarketPlace'),
@@ -44,12 +28,53 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-      ), //AppBar
-      body: Padding(
+        appBar: AppBar(
+          title: Text(title, style: TextStyle(
+            fontSize: 30,
+            color: Colors.orangeAccent,
+            fontFamily: 'DancingScript',
+            fontWeight: FontWeight.bold,),),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
+        ), //AppBar
+        body: HomeClick()); //Scaffold
+  }
+
+}
+
+
+class HomeClick extends StatefulWidget {
+  const HomeClick({super.key});
+
+  @override
+  State<HomeClick> createState() {
+    // TODO: implement createState
+    return _MyHomeClickPage();
+  }
+
+}
+
+
+class _MyHomeClickPage extends State<HomeClick> {
+  int counter = 0;
+  final List<String> path = [
+    'assets/images/about all.png',
+    'assets/images/about family.png',
+    'assets/images/about high-tech.png',
+    'assets/images/about home.png',
+    'assets/images/about study.png'
+  ];
+
+  void _counterInc() {
+    setState(() {
+      counter = counter + 1;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return
+      Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
@@ -57,39 +82,51 @@ class MyHomePage extends StatelessWidget {
               'Интернет-магазины',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            //Text
-            SizedBox(height: 30),
-            Text(
+            Expanded(child: ElevatedButton(
+              onPressed: () {
+                _counterInc();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('Поменять'),)
+            ),
+            SizedBox(height: 20),
+            Flexible(child: Text(
               'Учёт товаров, категоризация, взаимодействие с покупателями и продавцами, обработка платежей, логистика, оповещения, модерация, дизайн',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
-            ),
+            ),),
             //Text
             SizedBox(height: 20),
             Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/images/About Image.png',
-                      width: 160,
-                      height: 160,
-                    ),
-                    SizedBox(width: 40), // отступ между иконкой и текстом
-                    Column(
+                    IconButton(onPressed: () {
+                      _counterInc();
+                    }, iconSize: 200,
+                      icon: Image.asset(
+                          path[counter % 5],
+                          width: 200,
+                          height: 200
+                      ),),
+                    SizedBox(width: 10), // отступ между иконкой и текстом
+                    Flexible(child: Column(
                       crossAxisAlignment: .start,
                       children: [
-                        Text('1) Заказать обувь', style: TextStyle(fontSize: 18)),
-                        Text('2) Заказать игры', style: TextStyle(fontSize: 18)),
-                        Text('3) Стать продавцом', style: TextStyle(fontSize: 18)),
-                        Text('4) Быть красавчиком', style: TextStyle(fontSize: 18)),
-                      ],)
+                        Text('1) Заказать обувь',
+                            style: TextStyle(fontSize: 18)),
+                        Text(
+                            '2) Заказать игры', style: TextStyle(fontSize: 18)),
+                        Text('3) Стать продавцом',
+                            style: TextStyle(fontSize: 18)),
+                        Text('4) Быть красавчиком',
+                            style: TextStyle(fontSize: 18)),
+                      ],))
                   ],
                 )
             ),
-
-            // Just test
-
-
             SizedBox(height: 40),
             Center(
                 child: Row(
@@ -97,17 +134,18 @@ class MyHomePage extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.person,
-                      size: 80.0,
+                      size: 100.0,
                       color: Colors.blue,
                     ),
                     SizedBox(width: 40), // отступ между иконкой и текстом
-                    Text('Сулейкин А.М ИКБО-61-23', style: TextStyle(fontSize: 18)),
+                    Expanded(child: Text(
+                        'Cтудент МИРЭА Сулейкин А.М ИКБО-61-23',
+                        style: TextStyle(fontSize: 20)),)
                   ],
                 )
             ),
           ],
         ), //Column
-      ), //Padding
-    ); //Scaffold
+      );
   }
 }
