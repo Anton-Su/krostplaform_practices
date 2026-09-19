@@ -137,7 +137,7 @@ class _MyHomeClickPage extends State<HomeClick> {
                       color: Colors.blue,
                     ),
                     SizedBox(width: 40), // отступ между иконкой и текстом
-                    Expanded(child: Text(
+                    Flexible(child: Text(
                         'Cтудент МИРЭА Сулейкин А.М ИКБО-61-23',
                         style: TextStyle(fontSize: 20)),)
                   ],
