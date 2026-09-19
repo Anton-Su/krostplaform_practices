@@ -106,7 +106,7 @@ class _MyHomeClickPage extends State<HomeClick> {
                       _counterInc();
                     }, iconSize: 200,
                       icon: Image.asset(
-                          path[counter % 5],
+                          path[counter % path.length],
                           width: 200,
                           height: 200
                       ),),
