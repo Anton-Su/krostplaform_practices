@@ -102,14 +102,14 @@ class _MyHomeClickPage extends State<HomeClick> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(onPressed: () {
-                      _counterInc();
-                    }, iconSize: 200,
-                      icon: Image.asset(
-                          path[counter % path.length],
-                          width: 200,
-                          height: 200
-                      ),),
+                    GestureDetector(
+                      onTap: _counterInc,
+                      child: Image.asset(
+                        path[counter % path.length],
+                        width: 200,
+                        height: 200,
+                      ),
+                    ),
                     SizedBox(width: 10), // отступ между иконкой и текстом
                     Flexible(child: Column(
                       crossAxisAlignment: .start,
