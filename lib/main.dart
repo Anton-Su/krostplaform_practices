@@ -63,6 +63,31 @@ class _MyHomeClickPage extends State<HomeClick> {
     'assets/images/about home.png',
     'assets/images/about study.png'
   ];
+  final List <String> tasks = [
+    'Заказать обувь',
+    'Заказать игры',
+    'Стать продавцом',
+    'Продавать много и выгодно',
+    'Стать красавчиком'
+  ];
+
+  final List<IconData> early_icons = [
+    Icons.face,
+    Icons.tag_faces,
+    Icons.work,
+    Icons.book,
+    Icons.gamepad
+  ];
+
+  final List<IconData> later_icons = [
+    Icons.face_2,
+    Icons.garage,
+    Icons.work_off,
+    Icons.book_online,
+    Icons.handyman
+  ];
+
+
 
   void _counterInc() {
     setState(() {
@@ -81,59 +106,72 @@ class _MyHomeClickPage extends State<HomeClick> {
               'Интернет-магазины',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            Expanded(child: ElevatedButton(
-              onPressed: () {
-                _counterInc();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('Поменять'),)
-            ),
             SizedBox(height: 20),
             Flexible(child: Text(
               'Учёт товаров, категоризация, взаимодействие с покупателями и продавцами, обработка платежей, логистика, оповещения, модерация, дизайн',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
             ),),
-            //Text
-            SizedBox(height: 20),
-            Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: _counterInc,
+            Container(
+              height: 200,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  GestureDetector(
+                    onTap: _counterInc,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
                       child: Image.asset(
                         path[counter % path.length],
-                        width: 200,
+                        width: 180,
                         height: 200,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(width: 10), // отступ между иконкой и текстом
-                    Flexible(child: Column(
-                      crossAxisAlignment: .start,
-                      children: [
-                        Text('1) Заказать обувь',
-                            style: TextStyle(fontSize: 18)),
-                        Text(
-                            '2) Заказать игры', style: TextStyle(fontSize: 18)),
-                        Text('3) Стать продавцом',
-                            style: TextStyle(fontSize: 18)),
-                        Text('4) Быть красавчиком',
-                            style: TextStyle(fontSize: 18)),
-                      ],))
-                  ],
-                )
+                  ),
+                  const SizedBox(width: 20),
+                  GestureDetector(
+                    onTap: _counterInc,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset(
+                        path[(counter + 1) % path.length],
+                        width: 180,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 20),
+            Expanded(child: ListView.builder(
+              itemCount: tasks.length,
+              itemBuilder: (context, index) {
+                return Card(child: ListTile(
+                  title: Text(tasks[index], style: TextStyle(fontSize: 18), textAlign: .center,),
+                  leading: Icon(early_icons[index]),
+                  trailing: Icon(later_icons[index]),
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Нажато ${index + 1} пунктик'),
+                        behavior: SnackBarBehavior.fixed,
+                        duration: const Duration(seconds: 1),
+                      ),
+                    );
+                  },
+                ),
+                );
+              },
+            ),),
             Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.person,
-                      size: 100.0,
+                      size: 80.0,
                       color: Colors.blue,
                     ),
                     SizedBox(width: 40), // отступ между иконкой и текстом
