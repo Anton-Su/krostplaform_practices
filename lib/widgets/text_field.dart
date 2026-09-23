@@ -42,6 +42,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField>{
             "Name" => "Введите имя",
             "Email" => "Введите email",
             "Password" => "Введите пароль",
+            "ConfirmPassword" => "Введите пароль ещё раз",
             String() => "Введите чёрт знает что",
           },
           border: OutlineInputBorder(),
@@ -58,7 +59,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField>{
             "Name" => Icon(EarlyIcon[0]),
             "Email" => Icon(EarlyIcon[2]),
             "Password" => Icon(EarlyIcon[1]),
-            String() => Icon(EarlyIcon[3]),
+            "ConfirmPassword" => Icon(EarlyIcon[3]),
+            String() => Icon(Icons.question_answer),
           },
           suffixIcon: (widget.isProtected) ? IconButton(
               icon: (_eyeText) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
