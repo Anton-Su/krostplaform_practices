@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_1/widgets/text_field.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'The Antoha MarketPlace'),
+      home: const Scaffold(
+        body: CustomTextFormField(isProtected: true, type: "Password",),
+      ),
+      // home: const MyHomePage(title: 'The Antoha MarketPlace'),
     );
   }
 }
