@@ -85,19 +85,19 @@ class _ProfilePageState extends State<ProfilePage> {
                     controller: _nameController,
                     type: 'Name',
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   CustomTextFormField(
                     controller: _emailController,
                     isProtected: false,
                     type: 'Email',
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   CustomTextFormField(
                     controller: _passwordController,
                     isProtected: true,
                     type: 'Password',
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   CustomTextFormField(
                     controller: _passwordController,
                     isProtected: true,

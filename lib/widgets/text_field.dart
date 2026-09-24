@@ -42,7 +42,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField>{
             "Name" => "Введите имя",
             "Email" => "Введите email",
             "Password" => "Введите пароль",
-            "ConfirmPassword" => "Введите пароль ещё раз",
+            "ConfirmPassword" => "Повторите пароль",
             String() => "Введите чёрт знает что",
           },
           border: OutlineInputBorder(

@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     isProtected: false,
                     type: 'Email',
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   CustomTextFormField(
                     controller: _passwordController,
                     isProtected: true,
