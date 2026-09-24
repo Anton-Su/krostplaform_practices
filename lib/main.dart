@@ -22,17 +22,13 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         // Главный экран
-        '/': (context) => const LoginPage(),
+        '/': (context) => const MyHomePage(title: 'The Antoha MarketPlace'),
         // Экран подробностей
         '/profile': (context) => const ProfilePage(),
         '/register': (context) => const RegisterPage(),
 
       },
 
-
-      // home: const Scaffold(
-      //   body: CustomTextFormField(isProtected: true, type: "Password",),
-      // ),
       //home: const MyHomePage(title: 'The Antoha MarketPlace'),
     );
   }
