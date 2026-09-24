@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         // Главный экран
-        Routes.loading: (context) => const LoadingPage(),
-        Routes.info: (context) => const MyHomePage(title: 'The Antoha MarketPlace'),
+        Routes.loading: (context) => const LoadingPage(title: 'The Antoha MarketPlace'),
+        Routes.info: (context) => const MyHomePage(),
         Routes.login: (context) => const LoginPage(),
         Routes.profile: (context) => const ProfilePage(),
         Routes.register: (context) => const RegisterPage(),

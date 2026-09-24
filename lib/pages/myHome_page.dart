@@ -3,9 +3,9 @@ import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/routes.dart';
 
 class MyHomePage extends StatefulWidget {
-  final String title;
 
-  const MyHomePage({super.key, required this.title});
+
+  const MyHomePage({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -35,23 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
   //   children: _screens,
   // ),
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: const TextStyle(
-            fontSize: 30,
-            color: Colors.orangeAccent,
-            fontFamily: 'DancingScript',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-      ),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.deepPurple.shade50,
         indicatorColor: Colors.deepPurple.shade100,
