@@ -21,27 +21,30 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-      title: Text(
-        widget.title,
-        style: const TextStyle(
-          fontSize: 30,
-          color: Colors.orangeAccent,
-          fontFamily: 'DancingScript',
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      centerTitle: true,
-      backgroundColor: Colors.blue,
-    ),
-      body: Center(child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Image.asset(
-          'assets/images/icon app.png',
-          width: 200,
-          height: 200,
-          fit: BoxFit.cover,
-        ),),)
+    return Scaffold(
+      body: Column(
+        children: [
+          const SizedBox(height: 20),
+          Center(child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Image.asset(
+              'assets/images/icon app.png',
+              width: 300,
+              height: 300,
+              fit: BoxFit.cover,
+            ),),),
+          const SizedBox(height: 10),
+          Text(
+            widget.title,
+            style: const TextStyle(
+              fontSize: 30,
+              color: Colors.orangeAccent,
+              fontFamily: 'DancingScript',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      )
     );
   }
 }
