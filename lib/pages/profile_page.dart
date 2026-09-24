@@ -52,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 150,
+        toolbarHeight: 70,
         title: const Text(
           "Профиль",
           style: TextStyle(
