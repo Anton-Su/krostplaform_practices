@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_1/pages/login_page.dart';
+import 'package:practice_1/pages/profile_page.dart';
+import 'package:practice_1/pages/register_page.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
 void main() {
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
         // Главный экран
         '/': (context) => const LoginPage(),
         // Экран подробностей
-        '/profile': (context) => const MyHomePage(title: "12313",),
+        '/profile': (context) => const ProfilePage(),
+        '/register': (context) => const RegisterPage(),
+
       },
 
 

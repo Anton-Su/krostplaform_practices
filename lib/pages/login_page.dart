@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
   @override
@@ -9,36 +10,39 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _passwordController2 = TextEditingController();
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _passwordController2.dispose();
     super.dispose();
   }
 
-  void _submit() {
+  void _toRegister(String path){
+    FocusScope.of(context).unfocus();
+    Navigator.pushNamed(context, path);
+  }
+
+  void _submit(String path) {
     if (_formKey.currentState?.validate() ?? false) {
-      if (_passwordController.text != _passwordController2.text) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Пароли не совпадают')),
-        );
-        return;
-      }
       FocusScope.of(context).unfocus();
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Данные успешно прошли проверку'),
         ),
       );
-      Navigator.pushNamed(context, '/profile');
+      Navigator.pushNamed(context, path);
     }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Валидация не пройдена!'),
+        ),
+      );
+    }
+
   }
   @override
   Widget build(BuildContext context) {
@@ -64,12 +68,6 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   CustomTextFormField(
-                    isProtected: false,
-                    controller: _nameController,
-                    type: 'Name',
-                  ),
-                  const SizedBox(height: 12),
-                  CustomTextFormField(
                     controller: _emailController,
                     isProtected: false,
                     type: 'Email',
@@ -80,24 +78,18 @@ class _LoginPageState extends State<LoginPage> {
                     isProtected: true,
                     type: 'Password',
                   ),
-                  const SizedBox(height: 12),
-                  CustomTextFormField(
-                    controller: _passwordController,
-                    isProtected: true,
-                    type: 'ConfirmPassword',
-                  ),
                   const SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: const [Text('Забыли пароль?')],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
                     ),
-                    onPressed: () => _submit(),
+                    onPressed: () => _submit("/profile"),
                     child: const Text("Войти", style: TextStyle(fontSize: 20)),
                   ),
                 ],
@@ -106,7 +98,18 @@ class _LoginPageState extends State<LoginPage> {
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [Text('Нет аккаунта? ', style: TextStyle(fontSize: 20)), Text('Зарегистрируйтесь', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), )],
+              children: [
+                const Text('Нет аккаунта? ', style: TextStyle(fontSize: 20)),
+                GestureDetector(
+                  onTap: () {
+                    _toRegister("/register");
+                  },
+                  child: const Text(
+                    'Зарегистрируйтесь',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
