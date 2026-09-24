@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_1/pages/login_page.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
 void main() {
@@ -13,13 +14,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      initialRoute: '/',
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Scaffold(
-        body: CustomTextFormField(isProtected: true, type: "Password",),
-      ),
-      // home: const MyHomePage(title: 'The Antoha MarketPlace'),
+      routes: {
+        // Главный экран
+        '/': (context) => const LoginPage(),
+        // Экран подробностей
+        '/profile': (context) => const MyHomePage(title: "12313",),
+      },
+
+
+      // home: const Scaffold(
+      //   body: CustomTextFormField(isProtected: true, type: "Password",),
+      // ),
+      //home: const MyHomePage(title: 'The Antoha MarketPlace'),
     );
   }
 }
@@ -90,8 +100,6 @@ class _MyHomeClickPage extends State<HomeClick> {
     Icons.book_online,
     Icons.handyman
   ];
-
-
 
   void _counterInc() {
     setState(() {
