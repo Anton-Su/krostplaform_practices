@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_1/routes.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
 
@@ -105,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
                     ),
-                    onPressed: () => _submit("/profile"),
+                    onPressed: () => _submit(Routes.profile),
                     child: const Text("Зарегистрироваться", style: TextStyle(fontSize: 20)),
                   ),
                 ],

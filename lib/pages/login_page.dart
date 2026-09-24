@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_1/routes.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
 
@@ -89,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
                     ),
-                    onPressed: () => _submit("/profile"),
+                    onPressed: () => _submit(Routes.info),
                     child: const Text("Войти", style: TextStyle(fontSize: 20)),
                   ),
                 ],
@@ -102,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                 const Text('Нет аккаунта? ', style: TextStyle(fontSize: 20)),
                 GestureDetector(
                   onTap: () {
-                    _toRegister("/register");
+                    _toRegister(Routes.register);
                   },
                   child: const Text(
                     'Зарегистрируйтесь',

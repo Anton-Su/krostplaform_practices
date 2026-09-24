@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_1/routes.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
 
@@ -109,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
                     ),
-                    onPressed: () => _submit('/profile'),
+                    onPressed: () => _submit(Routes.profile),
                     // бесконечный телепорт
                     child: const Text("Сохранить", style: TextStyle(fontSize: 20)),
                   ),
