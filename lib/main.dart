@@ -4,6 +4,7 @@ import 'package:practice_1/pages/login_page.dart';
 import 'package:practice_1/pages/myHome_page.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/pages/register_page.dart';
+import 'package:practice_1/pages/detail_page.dart';
 import 'package:practice_1/routes.dart';
 
 
@@ -30,6 +31,20 @@ class MyApp extends StatelessWidget {
         Routes.login: (context) => const LoginPage(),
         Routes.profile: (context) => const ProfilePage(),
         Routes.register: (context) => const RegisterPage(),
+        Routes.details: (context) => const DetailPage(title: 'Test',),
+      },
+      onGenerateRoute: (routeSettings) {
+        final path = routeSettings.name?.split('/');
+        if (path == null || path.length < 3) {
+          return null;
+        }
+        if (path[1] == Routes.details.split("/")[1]) {
+          return MaterialPageRoute(
+            builder: (context) => DetailPage(title: path[2]),
+            settings: routeSettings,
+          );
+        }
+        return null;
       },
     );
   }
