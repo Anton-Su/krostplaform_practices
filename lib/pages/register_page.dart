@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
           content: Text('Данные успешно прошли проверку'),
         ),
       );
-      Navigator.pushNamed(context, path);
+      Navigator.pushReplacementNamed(context, path);
     }
     else{
       ScaffoldMessenger.of(context).showSnackBar(

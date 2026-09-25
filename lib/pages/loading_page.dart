@@ -24,7 +24,8 @@ class _LoadingPageState extends State<LoadingPage> {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(height: 20),
+          const Spacer(),
+          // const SizedBox(height: 20),
           Center(child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(

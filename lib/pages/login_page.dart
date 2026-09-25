@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
           content: Text('Данные успешно прошли проверку'),
         ),
       );
-      Navigator.pushNamed(context, path);
+      Navigator.pushReplacementNamed(context, path);
     }
     else{
       ScaffoldMessenger.of(context).showSnackBar(
@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text('Нет аккаунта? ', style: TextStyle(fontSize: 20)),
-                GestureDetector(
+                Flexible(child: GestureDetector(
                   onTap: () {
                     _toRegister(Routes.register);
                   },
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                     'Зарегистрируйтесь',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                ),
+                ),),
               ],
             ),
           ],

@@ -53,7 +53,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
         title: const Text(
           "Профиль",
           style: TextStyle(
@@ -72,11 +71,11 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: BorderRadius.circular(30),
               child: Image.asset(
                 'assets/images/about all.png',
-                width: 180,
-                height: 200,
+                width: 80,
+                height: 80,
                 fit: BoxFit.cover,
               ),),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Form(
               key: _formKey,
               child: Column(
@@ -86,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     controller: _nameController,
                     type: 'Name',
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   CustomTextFormField(
                     controller: _emailController,
                     isProtected: false,

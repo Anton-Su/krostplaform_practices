@@ -3,10 +3,8 @@ import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/routes.dart';
 
 class MyHomePage extends StatefulWidget {
-
-
-  const MyHomePage({super.key});
-
+  final String title;
+  const MyHomePage({super.key, required this.title});
   @override
   State<StatefulWidget> createState() {
     return _MyHomePageState();
@@ -17,26 +15,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
-  static const List<String> _screen_path = [
-    Routes.info,
-    Routes.profile
-  ];
-
-  void _submit(String path) {
-    Navigator.pushNamed(context, _screen_path[_selectedIndex]);
-  }
-
-  // static const List<Widget> _screens = [
-  //   HomeClick(),
-  //   ProfilePage(),
-  // ];
-  // body: IndexedStack(
-  //   index: _selectedIndex,
-  //   children: _screens,
-  // ),
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _screens = [
+      HomeClick(title: widget.title),
+      const ProfilePage(),
+    ];
+
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.deepPurple.shade50,
@@ -58,13 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _screens,
+      ),
     );
   }
 }
 
 class HomeClick extends StatefulWidget {
-  const HomeClick({super.key});
+  final String title;
+  const HomeClick({super.key, required this.title});
 
   @override
   State<HomeClick> createState() {
@@ -76,12 +65,6 @@ class HomeClick extends StatefulWidget {
 
 class _MyHomeClickPage extends State<HomeClick> {
   int counter = 0;
-  int _selectedIndex = 0;
-  static const List<Widget> _screens = [
-    Center(child: Text('Главная')),
-    Center(child: Text('Поиск')),
-    Center(child: Text('Профиль')),
-  ];
   final List<String> path = [
     'assets/images/about all.png',
     'assets/images/about family.png',
@@ -97,7 +80,7 @@ class _MyHomeClickPage extends State<HomeClick> {
     'Стать красавчиком'
   ];
 
-  final List<IconData> early_icons = [
+  final List<IconData> earlyIcons = [
     Icons.face,
     Icons.tag_faces,
     Icons.work,
@@ -105,7 +88,7 @@ class _MyHomeClickPage extends State<HomeClick> {
     Icons.gamepad
   ];
 
-  final List<IconData> later_icons = [
+  final List<IconData> laterIcons = [
     Icons.face_2,
     Icons.garage,
     Icons.work_off,
@@ -121,96 +104,116 @@ class _MyHomeClickPage extends State<HomeClick> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            IndexedStack(
-              index: _selectedIndex,
-              children: _screens,
+    final width = MediaQuery.sizeOf(context).width;
+    final int horizontalCount = width > 600 ? 2 : 1;
+    final double horizontalChildAspectRatio = width > 600 ? 10 : 5;
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            widget.title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+              color: Colors.orangeAccent,
+              fontFamily: 'DancingScript',
             ),
-            Text(
-              'Интернет-магазины',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Flexible(child: Text(
-              'Учёт товаров, категоризация, взаимодействие с покупателями и продавцами, обработка платежей, логистика, оповещения, модерация, дизайн',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
-            ),),
-            Container(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  GestureDetector(
-                    onTap: _counterInc,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Image.asset(
-                        path[counter % path.length],
-                        width: 180,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  GestureDetector(
-                    onTap: _counterInc,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Image.asset(
-                        path[(counter + 1) % path.length],
-                        width: 180,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Expanded(child: ListView.builder(
-              itemCount: tasks.length,
-              itemBuilder: (context, index) {
-                return Card(child: ListTile(
-                  title: Text(tasks[index], style: TextStyle(fontSize: 18), textAlign: .center,),
-                  leading: Icon(early_icons[index]),
-                  trailing: Icon(later_icons[index]),
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('Нажато ${index + 1} пунктик'),
-                        behavior: SnackBarBehavior.fixed,
-                        duration: const Duration(seconds: 1),
-                      ),
-                    );
-                  },
-                ),
-                );
-              },
-            ),),
-            Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.person,
-                      size: 80.0,
-                      color: Colors.blue,
-                    ),
-                    SizedBox(width: 40), // отступ между иконкой и текстом
-                    Flexible(child: Text(
-                        'Cтудент МИРЭА Сулейкин А.М ИКБО-61-23',
-                        style: TextStyle(fontSize: 20)),)
-                  ],
-                )
-            ),
-          ],
+          ),
         ),
-      );
+        body:
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Text(
+                'Интернет-магазины',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Flexible(child: Text(
+                'Учёт товаров, категоризация, взаимодействие с покупателями и продавцами, обработка платежей, логистика, оповещения, модерация, дизайн',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
+              ),),
+              SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    GestureDetector(
+                      onTap: _counterInc,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset(
+                          path[counter % path.length],
+                          width: 180,
+                          height: 200,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    GestureDetector(
+                      onTap: _counterInc,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset(
+                          path[(counter + 1) % path.length],
+                          width: 180,
+                          height: 200,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 15),
+              Expanded(child: GridView.builder(
+                itemCount: tasks.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: horizontalCount,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    childAspectRatio: horizontalChildAspectRatio),
+                itemBuilder: (context, index) {
+                  return Card(child: ListTile(
+                    title: Text(tasks[index], style: TextStyle(fontSize: 18),
+                      textAlign: .center,),
+                    leading: Icon(earlyIcons[index]),
+                    trailing: Icon(laterIcons[index]),
+                    onTap: () {
+                      // переброска на другую страницу
+
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Нажато ${index + 1} пунктик'),
+                          behavior: SnackBarBehavior.fixed,
+                          duration: const Duration(seconds: 1),
+                        ),
+                      );
+                    },
+                  ),
+                  );
+                },),),
+              Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.person,
+                        size: 80.0,
+                        color: Colors.blue,
+                      ),
+                      SizedBox(width: 40), // отступ между иконкой и текстом
+                      Flexible(child: Text(
+                          'Cтудент МИРЭА Сулейкин А.М ИКБО-61-23',
+                          style: TextStyle(fontSize: 17)),)
+                    ],
+                  )
+              ),
+            ],
+          ),
+        )
+    );
   }
 }
