@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
-                      fixedSize: Size(250, 100),
+                      fixedSize: Size(250, 70),
                     ),
                     onPressed: () => _submit("/profile"),
                     child: const Text("Войти", style: TextStyle(fontSize: 20)),

@@ -108,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
-                      fixedSize: Size(250, 100),
+                      fixedSize: Size(250, 70),
                     ),
                     onPressed: () => _submit('/profile'),
                     // бесконечный телепорт
