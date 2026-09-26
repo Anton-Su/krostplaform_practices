@@ -62,6 +62,8 @@ class _ProfilePageState extends State<ProfilePage> {
             fontFamily: 'DancingScript',
           ),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(30),

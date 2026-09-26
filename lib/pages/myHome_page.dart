@@ -105,6 +105,8 @@ class _MyHomeClickPage extends State<HomeClick> {
               fontFamily: 'DancingScript',
             ),
           ),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
         ),
         body:
         Padding(
