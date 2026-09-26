@@ -104,6 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
+                      fixedSize: Size(250, 100),
                     ),
                     onPressed: () => _submit("/profile"),
                     child: const Text("Зарегистрироваться", style: TextStyle(fontSize: 20)),
