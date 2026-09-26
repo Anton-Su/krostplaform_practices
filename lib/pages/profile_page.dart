@@ -39,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
           content: Text('Данные успешно прошли проверку'),
         ),
       );
-      // Navigator.pushNamed(context, path);
+      Navigator.pushNamed(context, path);
     }
     else{
       ScaffoldMessenger.of(context).showSnackBar(
@@ -109,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       backgroundColor: Colors.black,
                       foregroundColor: Colors.white, // цвет текста
                     ),
-                    onPressed: () => _submit(Routes.profile),
+                    onPressed: () => _submit(Routes.info),
                     // бесконечный телепорт
                     child: const Text("Сохранить", style: TextStyle(fontSize: 20)),
                   ),

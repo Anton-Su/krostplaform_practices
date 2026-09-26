@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/routes.dart';
+import 'package:practice_1/MoсkDataBase.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -29,7 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         animationDuration: const Duration(milliseconds: 500),
         selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) => setState(() => _selectedIndex = index),
+        onDestinationSelected: (index) =>
+            setState(() => _selectedIndex = index),
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
@@ -65,21 +67,6 @@ class HomeClick extends StatefulWidget {
 
 class _MyHomeClickPage extends State<HomeClick> {
   int counter = 0;
-  final List<String> path = [
-    'assets/images/about all.png',
-    'assets/images/about family.png',
-    'assets/images/about high-tech.png',
-    'assets/images/about home.png',
-    'assets/images/about study.png'
-  ];
-  final List <String> tasks = [
-    'Заказать обувь',
-    'Заказать игры',
-    'Стать продавцом',
-    'Продавать много и выгодно',
-    'Стать красавчиком'
-  ];
-
   final List<IconData> earlyIcons = [
     Icons.face,
     Icons.tag_faces,
@@ -143,7 +130,7 @@ class _MyHomeClickPage extends State<HomeClick> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
                         child: Image.asset(
-                          path[counter % path.length],
+                          positions[counter % positions.length].path,
                           width: 180,
                           height: 200,
                           fit: BoxFit.cover,
@@ -156,7 +143,7 @@ class _MyHomeClickPage extends State<HomeClick> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
                         child: Image.asset(
-                          path[(counter + 1) % path.length],
+                          positions[(counter + 1) % positions.length].path,
                           width: 180,
                           height: 200,
                           fit: BoxFit.cover,
@@ -168,7 +155,7 @@ class _MyHomeClickPage extends State<HomeClick> {
               ),
               SizedBox(height: 15),
               Expanded(child: GridView.builder(
-                itemCount: tasks.length,
+                itemCount: positions.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: horizontalCount,
                     crossAxisSpacing: 12,
@@ -176,7 +163,7 @@ class _MyHomeClickPage extends State<HomeClick> {
                     childAspectRatio: horizontalChildAspectRatio),
                 itemBuilder: (context, index) {
                   return Card(child: ListTile(
-                    title: Text(tasks[index], style: TextStyle(fontSize: 18),
+                    title: Text(positions[index].briefDescription, style: TextStyle(fontSize: 18),
                       textAlign: .center,),
                     leading: Icon(earlyIcons[index]),
                     trailing: Icon(laterIcons[index]),

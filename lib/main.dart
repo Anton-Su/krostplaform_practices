@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         Routes.login: (context) => const LoginPage(),
         Routes.profile: (context) => const ProfilePage(),
         Routes.register: (context) => const RegisterPage(),
-        Routes.details: (context) => const DetailPage(title: 'Test',),
+        Routes.details: (context) => const DetailPage(id: 0,),
       },
       onGenerateRoute: (routeSettings) {
         final path = routeSettings.name?.split('/');
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         }
         if (path[1] == Routes.details.split("/")[1]) {
           return MaterialPageRoute(
-            builder: (context) => DetailPage(title: path[2]),
+            builder: (context) => DetailPage(id: int.parse(path[2])),
             settings: routeSettings,
           );
         }
