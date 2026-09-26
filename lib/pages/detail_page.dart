@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:practice_1/MoсkDataBase.dart';
 
 
+// stub for 7
+
 class DetailPage extends StatelessWidget {
   final int id;
   const DetailPage({super.key, required this.id});
