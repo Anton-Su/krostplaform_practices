@@ -20,7 +20,7 @@ class MyHomeBloc extends Bloc<MyHomeEvent, MyHomeState> {
   async {
     emit(const MyHomeLoading());
     try {
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 2000));
       emit(MyHomeLoaded(positions: positions));
     } catch (e) {
       emit(const MyHomeError('Не удалось загрузить данные'));
