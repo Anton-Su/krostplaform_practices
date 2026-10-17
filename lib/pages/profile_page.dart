@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:practice_1/routes.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -28,27 +28,22 @@ class _ProfilePageState extends State<ProfilePage> {
   void _submit(String path) {
     if (_formKey.currentState?.validate() ?? false) {
       if (_passwordController.text != _passwordController2.text) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Пароли не совпадают')),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Пароли не совпадают')));
         return;
       }
       FocusScope.of(context).unfocus();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Данные успешно прошли проверку'),
-        ),
+        const SnackBar(content: Text('Данные успешно прошли проверку')),
       );
       Navigator.pushNamed(context, path);
-    }
-    else{
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Валидация не пройдена!'),
-        ),
-      );
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Валидация не пройдена!')));
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,50 +68,58 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: BorderRadius.circular(30),
               child: Image.asset(
                 'assets/images/about all.png',
-                width: 80,
-                height: 80,
+                width: 250,
+                height: 200,
                 fit: BoxFit.cover,
-              ),),
-            const SizedBox(height: 10),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  CustomTextFormField(
-                    isProtected: false,
-                    controller: _nameController,
-                    type: 'Name',
+              ),
+            ),
+            const SizedBox(height: 25),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      CustomTextFormField(
+                        isProtected: false,
+                        controller: _nameController,
+                        type: 'Name',
+                      ),
+                      const SizedBox(height: 10),
+                      CustomTextFormField(
+                        controller: _emailController,
+                        isProtected: false,
+                        type: 'Email',
+                      ),
+                      const SizedBox(height: 16),
+                      CustomTextFormField(
+                        controller: _passwordController,
+                        isProtected: true,
+                        type: 'Password',
+                      ),
+                      const SizedBox(height: 16),
+                      CustomTextFormField(
+                        controller: _passwordController,
+                        isProtected: true,
+                        type: 'ConfirmPassword',
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          foregroundColor: Colors.white,
+                          fixedSize: const Size(250, 70),
+                        ),
+                        onPressed: () => _submit(Routes.info),
+                        // бесконечный телепорт
+                        child: const Text(
+                          "Сохранить",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 10),
-                  CustomTextFormField(
-                    controller: _emailController,
-                    isProtected: false,
-                    type: 'Email',
-                  ),
-                  const SizedBox(height: 16),
-                  CustomTextFormField(
-                    controller: _passwordController,
-                    isProtected: true,
-                    type: 'Password',
-                  ),
-                  const SizedBox(height: 16),
-                  CustomTextFormField(
-                    controller: _passwordController,
-                    isProtected: true,
-                    type: 'ConfirmPassword',
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white, // цвет текста
-                      fixedSize: Size(250, 70),
-                    ),
-                    onPressed: () => _submit(Routes.info),
-                    // бесконечный телепорт
-                    child: const Text("Сохранить", style: TextStyle(fontSize: 20)),
-                  ),
-                ],
+                ),
               ),
             ),
           ],
