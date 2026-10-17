@@ -11,7 +11,7 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Пункт $id: ",
+            "Пункт ${id + 1}: ",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 30,

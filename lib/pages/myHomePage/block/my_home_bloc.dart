@@ -14,6 +14,8 @@ class MyHomeBloc extends Bloc<MyHomeEvent, MyHomeState> {
     on<LoadPositionsEvent>(_onLoad);
     on<UserTapped>(_onUserTapped);
   }
+
+
   Future<void> _onLoad(
       LoadPositionsEvent event,
       Emitter<MyHomeState> emit)
