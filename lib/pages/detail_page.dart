@@ -24,13 +24,13 @@ class DetailPage extends StatelessWidget {
             padding: const EdgeInsets.all(30),
             child: Column(
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Center(child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Image.asset(
                     positions[id].path,
                     width: 300,
-                    height: 300,
+                    height: 200,
                     fit: BoxFit.cover,
                   ),),),
                 const SizedBox(height: 10),
@@ -43,7 +43,7 @@ class DetailPage extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 Text(
                   positions[id].description,
                   style: const TextStyle(

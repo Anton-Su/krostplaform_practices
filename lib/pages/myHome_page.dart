@@ -171,7 +171,7 @@ class _MyHomeClickPage extends State<HomeClick> {
                     trailing: Icon(laterIcons[index]),
                     onTap: () {
                       // переброска на другую страницу
-                      Navigator.pushNamed(context, "${Routes.details}/${index + 1}");
+                      Navigator.pushNamed(context, "${Routes.details}/$index");
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('Нажато ${index + 1} пунктик'),
