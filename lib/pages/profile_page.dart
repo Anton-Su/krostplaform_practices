@@ -67,10 +67,10 @@ class _ProfilePageState extends State<ProfilePage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: Image.asset(
-                'assets/images/about all.png',
+                'assets/images/ava2.png',
                 width: 250,
                 height: 200,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
             ),
             const SizedBox(height: 25),

@@ -153,8 +153,7 @@ class HomeClick extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
                             child: Image.asset(
-                              positions[(counter + index) % positions.length]
-                                  .path,
+                              positions[(counter + index) % positions.length].path,
                               width: 180,
                               height: 200,
                               fit: BoxFit.cover,
