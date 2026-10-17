@@ -201,7 +201,7 @@ class HomeClick extends StatelessWidget {
                             onTap: () {
                               Navigator.pushNamed(
                                 context,
-                                "${Routes.details}/${index + 1}",
+                                "${Routes.details}/${index}",
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
