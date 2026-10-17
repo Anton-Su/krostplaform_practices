@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _screens = [
+    final List<Widget> screens = [
       HomeClick(title: widget.title),
       const ProfilePage(),
     ];
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        body: IndexedStack(index: _selectedIndex, children: _screens),
+        body: IndexedStack(index: _selectedIndex, children: screens),
       );
   }
 }
@@ -123,7 +123,7 @@ class HomeClick extends StatelessWidget {
             final int horizontalCount = width > 600 ? 2 : 1;
             final double horizontalChildAspectRatio = width > 600 ? 10 : 5;
 
-            void onCarouselTap() {
+            void onUserTap() {
               context.read<MyHomeBloc>().add(const UserTapped());
             }
 
@@ -149,7 +149,7 @@ class HomeClick extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       children: [
                         GestureDetector(
-                          onTap: onCarouselTap,
+                          onTap: onUserTap,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
                             child: Image.asset(
@@ -162,7 +162,7 @@ class HomeClick extends StatelessWidget {
                         ),
                         const SizedBox(width: 20),
                         GestureDetector(
-                          onTap: onCarouselTap,
+                          onTap: onUserTap,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
                             child: Image.asset(
@@ -199,7 +199,7 @@ class HomeClick extends StatelessWidget {
                             onTap: () {
                               Navigator.pushNamed(
                                 context,
-                                "${Routes.details}/${index}",
+                                "${Routes.details}/$index",
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
