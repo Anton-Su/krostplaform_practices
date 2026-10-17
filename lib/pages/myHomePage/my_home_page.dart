@@ -4,7 +4,6 @@ import 'package:practice_1/pages/myHomePage/block/my_home_bloc.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/routes.dart';
 
-
 class MyHomePage extends StatefulWidget {
   final String title;
 
@@ -27,29 +26,29 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     return Scaffold(
-        bottomNavigationBar: NavigationBar(
-          backgroundColor: Colors.deepPurple.shade50,
-          indicatorColor: Colors.deepPurple.shade100,
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-          animationDuration: const Duration(milliseconds: 500),
-          selectedIndex: _selectedIndex,
-          onDestinationSelected: (index) =>
-              setState(() => _selectedIndex = index),
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home),
-              label: 'Главная',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.person_outline),
-              selectedIcon: Icon(Icons.person),
-              label: 'Профиль',
-            ),
-          ],
-        ),
-        body: IndexedStack(index: _selectedIndex, children: screens),
-      );
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.deepPurple.shade50,
+        indicatorColor: Colors.deepPurple.shade100,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        animationDuration: const Duration(milliseconds: 500),
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (index) =>
+            setState(() => _selectedIndex = index),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home),
+            label: 'Главная',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: 'Профиль',
+          ),
+        ],
+      ),
+      body: IndexedStack(index: _selectedIndex, children: screens),
+    );
   }
 }
 
@@ -104,9 +103,9 @@ class HomeClick extends StatelessWidget {
                   const SizedBox(height: 12),
                   ElevatedButton(
                     onPressed: () {
-                        context
-                            .read<MyHomeBloc>()
-                            .add(const LoadPositionsEvent());
+                      context.read<MyHomeBloc>().add(
+                        const LoadPositionsEvent(),
+                      );
                     },
                     child: const Text('Повторить'),
                   ),
@@ -117,15 +116,9 @@ class HomeClick extends StatelessWidget {
           if (state is MyHomeLoaded) {
             final positions = state.positions;
             final counter = state.counter;
-            final width = MediaQuery
-                .sizeOf(context)
-                .width;
+            final width = MediaQuery.sizeOf(context).width;
             final int horizontalCount = width > 600 ? 2 : 1;
             final double horizontalChildAspectRatio = width > 600 ? 10 : 5;
-
-            void onUserTap() {
-              context.read<MyHomeBloc>().add(const UserTapped());
-            }
 
             return Padding(
               padding: const EdgeInsets.all(10.0),
@@ -140,40 +133,35 @@ class HomeClick extends StatelessWidget {
                     child: Text(
                       'Учёт товаров, категоризация, взаимодействие с покупателями и продавцами, обработка платежей, логистика, оповещения, модерация, дизайн',
                       style: TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.normal),
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 200,
-                    child: ListView(
+                    child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      children: [
-                        GestureDetector(
-                          onTap: onUserTap,
+                      itemCount: positions.length,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 20),
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            context.read<MyHomeBloc>().add(const UserTapped());
+                          },
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
                             child: Image.asset(
-                              positions[counter % positions.length].path,
+                              positions[(counter + index) % positions.length]
+                                  .path,
                               width: 180,
                               height: 200,
                               fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 20),
-                        GestureDetector(
-                          onTap: onUserTap,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Image.asset(
-                              positions[(counter + 1) % positions.length].path,
-                              width: 180,
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 15),
