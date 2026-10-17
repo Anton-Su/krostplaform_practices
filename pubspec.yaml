@@ -29,6 +29,9 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter_bloc: ^9.1.1
+  drift: ^2.35.0
+  drift_flutter: ^0.3.1
+  path_provider: ^2.1.6
   flutter:
     sdk: flutter
 
@@ -37,6 +40,8 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
+  drift_dev: ^2.35.0
+  build_runner: ^2.16.1
   flutter_test:
     sdk: flutter
 

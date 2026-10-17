@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:practice_1/data/database.dart';
 import 'package:practice_1/pages/loading_page.dart';
 import 'package:practice_1/pages/login_page.dart';
 import 'package:practice_1/pages/myHomePage/block/my_home_bloc.dart';
@@ -10,9 +11,11 @@ import 'package:practice_1/pages/detail_page.dart';
 import 'package:practice_1/routes.dart';
 
 
-void main() {
-  runApp(const MyApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final database = AppDatabase();
+  // Передаем базу данных через DI или напрямую в приложение
+  runApp(MyApp(database: database));}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
