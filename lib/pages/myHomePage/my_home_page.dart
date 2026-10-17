@@ -26,9 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
       const ProfilePage(),
     ];
 
-    return BlocProvider(
-      create: (_) => MyHomeBloc()..add(const LoadPositionsEvent()),
-      child: Scaffold(
+    return Scaffold(
         bottomNavigationBar: NavigationBar(
           backgroundColor: Colors.deepPurple.shade50,
           indicatorColor: Colors.deepPurple.shade100,
@@ -51,8 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: IndexedStack(index: _selectedIndex, children: _screens),
-      ),
-    );
+      );
   }
 }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practice_1/pages/loading_page.dart';
 import 'package:practice_1/pages/login_page.dart';
+import 'package:practice_1/pages/myHomePage/block/my_home_bloc.dart';
 import 'package:practice_1/pages/myHomePage/my_home_page.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/pages/register_page.dart';
@@ -27,7 +29,10 @@ class MyApp extends StatelessWidget {
       routes: {
         // Главный экран
         Routes.loading: (context) => const LoadingPage(title: 'The Antoha MarketPlace'),
-        Routes.info: (context) => const MyHomePage(title: 'The Antoha MarketPlace'),
+        Routes.info: (context) =>
+            BlocProvider(
+                create: (_) => MyHomeBloc()..add(const LoadPositionsEvent()),
+                child: const MyHomePage(title: 'The Antoha MarketPlace'),),
         Routes.login: (context) => const LoginPage(),
         Routes.profile: (context) => const ProfilePage(),
         Routes.register: (context) => const RegisterPage(),
