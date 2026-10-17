@@ -106,10 +106,11 @@ class HomeClick extends StatelessWidget {
                   Text(state.message),
                   const SizedBox(height: 12),
                   ElevatedButton(
-                    onPressed: () =>
+                    onPressed: () {
                         context
                             .read<MyHomeBloc>()
-                            .add(const LoadPositionsEvent()),
+                            .add(const LoadPositionsEvent());
+                    },
                     child: const Text('Повторить'),
                   ),
                 ],
