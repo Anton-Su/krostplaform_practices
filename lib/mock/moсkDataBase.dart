@@ -1,9 +1,4 @@
-class Position{
-  final String briefDescription;
-  final String description;
-  final String path;
-  const Position({required this.briefDescription, required this.description, required this.path});
-}
+import 'package:practice_1/models/position.dart';
 
 final List<Position> positions = [
   Position(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/routes.dart';
-import 'package:practice_1/MoсkDataBase.dart';
+import 'package:practice_1/mock/moсkDataBase.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;

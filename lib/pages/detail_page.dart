@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice_1/MoсkDataBase.dart';
-
+import 'package:practice_1/mock/moсkDataBase.dart';
 
 // stub for 7
 
