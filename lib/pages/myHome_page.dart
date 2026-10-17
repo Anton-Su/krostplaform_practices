@@ -124,35 +124,24 @@ class _MyHomeClickPage extends State<HomeClick> {
               ),),
               SizedBox(
                 height: 200,
-                child: ListView(
+                child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    GestureDetector(
+                  itemCount: positions.length,
+                  separatorBuilder: (context, index) => const SizedBox(width: 14),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
                       onTap: _counterInc,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
                         child: Image.asset(
-                          positions[counter % positions.length].path,
+                          positions[(counter + index) % positions.length].path,
                           width: 180,
                           height: 200,
                           fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 20),
-                    GestureDetector(
-                      onTap: _counterInc,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Image.asset(
-                          positions[(counter + 1) % positions.length].path,
-                          width: 180,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
               SizedBox(height: 15),
