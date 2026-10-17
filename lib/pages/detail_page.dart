@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice_1/mock/moсkDataBase.dart';
+import 'package:practice_1/data/mockDataBase.dart';
 
 
 class DetailPage extends StatelessWidget {

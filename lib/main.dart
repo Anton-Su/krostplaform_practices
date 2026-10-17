@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:practice_1/Di/di.dart';
 import 'package:practice_1/data/database.dart';
 import 'package:practice_1/pages/loading_page.dart';
 import 'package:practice_1/pages/login_page.dart';
@@ -12,6 +13,7 @@ import 'package:practice_1/routes.dart';
 
 
 void main() async {
+  configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   final database = AppDatabase();
   // Передаем базу данных через DI или напрямую в приложение
