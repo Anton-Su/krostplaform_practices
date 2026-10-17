@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Image.asset(
                 'assets/images/ava2.png',
                 width: 250,
-                height: 200,
+                height: 150,
                 fit: BoxFit.fitHeight,
               ),
             ),
