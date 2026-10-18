@@ -11,7 +11,7 @@ final class DetailLoading extends DetailState {
 }
 
 final class DetailLoaded extends DetailState {
-  final PositionRow position;
+  final Position position;
   const DetailLoaded(this.position);
 }
 

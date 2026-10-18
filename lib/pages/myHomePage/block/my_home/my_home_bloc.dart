@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:practice_1/data/database.dart';
+import 'package:practice_1/domain/entities/position.dart';
+import 'package:practice_1/domain/usecases/get_positions.dart';
 
 part 'my_home_event.dart';
 part 'my_home_state.dart';
@@ -10,8 +11,8 @@ part 'my_home_state.dart';
 
 @injectable
 class MyHomeBloc extends Bloc<MyHomeEvent, MyHomeState> {
-  final AppDatabase _db;
-  MyHomeBloc(this._db) : super(const MyHomeInitial()) {
+  final GetPositions _getPositions;
+  MyHomeBloc(this._getPositions) : super(const MyHomeInitial()) {
     on<LoadPositionsEvent>(_onLoad);
     on<UserTapped>(_onUserTapped);
   }
@@ -22,8 +23,7 @@ class MyHomeBloc extends Bloc<MyHomeEvent, MyHomeState> {
   async {
     emit(const MyHomeLoading());
     try {
-      final positions = await _db.select(_db.positions).get();
-      await Future.delayed(const Duration(milliseconds: 2000));
+      final positions = await _getPositions();
       emit(MyHomeLoaded(positions: positions));
     } catch (e) {
       emit(const MyHomeError('Не удалось загрузить данные'));

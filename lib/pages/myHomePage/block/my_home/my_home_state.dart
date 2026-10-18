@@ -21,7 +21,7 @@ final class MyHomeLoading extends MyHomeState {
 
 // loaded: данные получены
 final class MyHomeLoaded extends MyHomeState {
-  final List<PositionRow> positions;
+  final List<Position> positions;
   final int counter;
   const MyHomeLoaded({required this.positions, this.counter = 0});
   MyHomeLoaded copyWith({int? counter}) {
