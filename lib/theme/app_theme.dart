@@ -38,6 +38,24 @@ abstract final class AppTheme {
       ),
     ),
    iconTheme: const IconThemeData(color: Colors.lightBlue),
+   navigationBarTheme: NavigationBarThemeData(
+    backgroundColor: Colors.black,
+    indicatorColor: Colors.greenAccent.shade100,
+    iconTheme: WidgetStateProperty.resolveWith((states) {
+     return IconThemeData(
+      color: states.contains(WidgetState.selected)
+          ? Colors.black
+          : Colors.greenAccent,
+     );
+    }),
+    labelTextStyle: WidgetStateProperty.resolveWith((states) {
+     return TextStyle(
+      color: states.contains(WidgetState.selected)
+          ? Colors.black
+          : Colors.greenAccent,
+     );
+    }),
+   ),
   );
 
   static final ThemeData dark = ThemeData(
@@ -47,12 +65,12 @@ abstract final class AppTheme {
     ),
     scaffoldBackgroundColor: const Color(0xFF121212),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xFF032E6D),
-      foregroundColor: Colors.white,
+      backgroundColor: Colors.lightBlue,
+      foregroundColor: Colors.yellow,
       elevation: 0,
     ),
     listTileTheme: const ListTileThemeData(
-      iconColor: Colors.yellow,
+      iconColor: Colors.cyan,
       textColor: Colors.blueGrey,
     ),
     textTheme: const TextTheme(
@@ -82,5 +100,23 @@ abstract final class AppTheme {
     ),
    ),
    iconTheme: const IconThemeData(color: Colors.deepPurple),
+   navigationBarTheme: NavigationBarThemeData(
+    backgroundColor: Colors.white,
+    indicatorColor: Colors.deepPurple.shade100,
+    iconTheme: WidgetStateProperty.resolveWith((states) {
+     return IconThemeData(
+      color: states.contains(WidgetState.selected)
+          ? Colors.deepPurple
+          : Colors.grey,
+     );
+    }),
+    labelTextStyle: WidgetStateProperty.resolveWith((states) {
+     return TextStyle(
+      color: states.contains(WidgetState.selected)
+          ? Colors.deepPurple
+          : Colors.grey,
+     );
+    }),
+   ),
   );
 }
