@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practice_1/Di/di.dart';
-import 'package:practice_1/pages/myHomePage/block/detail/detail_bloc.dart';
+import 'package:practice_1/pages/myHomePage/bloc/detail/detail_bloc.dart';
 
 class DetailPage extends StatelessWidget {
   final int id;
