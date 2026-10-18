@@ -39,7 +39,7 @@ abstract final class AppTheme {
     ),
    iconTheme: const IconThemeData(color: Colors.lightBlue),
    navigationBarTheme: NavigationBarThemeData(
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.white,
     indicatorColor: Colors.greenAccent.shade100,
     iconTheme: WidgetStateProperty.resolveWith((states) {
      return IconThemeData(
@@ -65,7 +65,7 @@ abstract final class AppTheme {
     ),
     scaffoldBackgroundColor: const Color(0xFF121212),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Colors.brown,
       foregroundColor: Colors.yellow,
       elevation: 0,
     ),
@@ -101,7 +101,7 @@ abstract final class AppTheme {
    ),
    iconTheme: const IconThemeData(color: Colors.deepPurple),
    navigationBarTheme: NavigationBarThemeData(
-    backgroundColor: Colors.white,
+    backgroundColor: const Color(0xFF1E1E1E),
     indicatorColor: Colors.deepPurple.shade100,
     iconTheme: WidgetStateProperty.resolveWith((states) {
      return IconThemeData(
