@@ -4,7 +4,7 @@ import 'package:practice_1/Di/di.dart';
 import 'package:practice_1/data/database.dart';
 import 'package:practice_1/pages/loading_page.dart';
 import 'package:practice_1/pages/login_page.dart';
-import 'package:practice_1/pages/myHomePage/block/my_home_bloc.dart';
+import 'package:practice_1/pages/myHomePage/block/my_home/my_home_bloc.dart';
 import 'package:practice_1/pages/myHomePage/my_home_page.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/pages/register_page.dart';
@@ -13,11 +13,10 @@ import 'package:practice_1/routes.dart';
 
 
 void main() async {
-  configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
-  final database = AppDatabase();
-  // Передаем базу данных через DI или напрямую в приложение
-  runApp(MyApp(database: database));}
+  configureDependencies();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,20 +27,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       initialRoute: '/',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       routes: {
         // Главный экран
-        Routes.loading: (context) => const LoadingPage(title: 'The Antoha MarketPlace'),
-        Routes.info: (context) =>
-            BlocProvider(
-                create: (_) => MyHomeBloc()..add(const LoadPositionsEvent()),
-                child: const MyHomePage(title: 'The Antoha MarketPlace'),),
+        Routes.loading: (context) =>
+            const LoadingPage(title: 'The Antoha MarketPlace'),
+        Routes.info: (context) => BlocProvider(
+          create: (_) => getIt<MyHomeBloc>()..add(const LoadPositionsEvent()),
+          child: const MyHomePage(title: 'The Antoha MarketPlace'),
+        ),
         Routes.login: (context) => const LoginPage(),
         Routes.profile: (context) => const ProfilePage(),
         Routes.register: (context) => const RegisterPage(),
-        Routes.details: (context) => const DetailPage(id: 0,),
       },
       onGenerateRoute: (routeSettings) {
         final path = routeSettings.name?.split('/');

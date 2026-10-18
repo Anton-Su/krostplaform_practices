@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:practice_1/pages/myHomePage/block/my_home_bloc.dart';
+import 'package:practice_1/pages/myHomePage/block/my_home/my_home_bloc.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/routes.dart';
 
@@ -187,7 +187,7 @@ class HomeClick extends StatelessWidget {
                             onTap: () {
                               Navigator.pushNamed(
                                 context,
-                                "${Routes.details}/$index",
+                                "${Routes.details}/${index + 1}",
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
