@@ -9,7 +9,10 @@ import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/pages/register_page.dart';
 import 'package:practice_1/pages/detail_page.dart';
 import 'package:practice_1/routes.dart';
+import 'package:practice_1/theme/app_theme.dart';
 import 'package:practice_1/theme/theme_cubit.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,8 +34,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             initialRoute: '/',
-            theme: ThemeData.light(), // светлая тема
-            darkTheme: ThemeData.dark(),// темная тема
+            theme: AppTheme.light, // светлая тема
+            darkTheme: AppTheme.dark,// темная тема
             themeMode: themeMode, // сюда передаем состояние Cubit
             routes: {
               // Главный экран
