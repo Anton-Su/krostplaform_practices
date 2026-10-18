@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practice_1/pages/myHomePage/block/my_home/my_home_bloc.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/routes.dart';
+import 'package:practice_1/theme/theme_toggle_action.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -78,6 +79,9 @@ class HomeClick extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: const [
+          ThemeToggleAction(), // добавили кнопку
+        ],
         title: Text(
           title,
           style: const TextStyle(

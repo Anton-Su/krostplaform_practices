@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_1/routes.dart';
+import 'package:practice_1/theme/theme_toggle_action.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
 
@@ -58,6 +59,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: const [
+          ThemeToggleAction(), // добавили кнопку
+        ],
         toolbarHeight: 150,
         title: const Text(
           "Регистрация",

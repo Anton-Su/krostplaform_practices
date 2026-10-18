@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practice_1/Di/di.dart';
 import 'package:practice_1/pages/myHomePage/block/detail/detail_bloc.dart';
+import 'package:practice_1/theme/theme_toggle_action.dart';
 
 class DetailPage extends StatelessWidget {
   final int id;
@@ -14,6 +15,9 @@ class DetailPage extends StatelessWidget {
       create: (_) => getIt<DetailBloc>()..add(LoadDetail(id)),
       child: Scaffold(
         appBar: AppBar(
+          actions: const [
+            ThemeToggleAction(), // добавили кнопку
+          ],
           title: Text(
             "Пункт $id: ",
             style: TextStyle(

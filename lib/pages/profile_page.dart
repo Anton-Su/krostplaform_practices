@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_1/routes.dart';
+import 'package:practice_1/theme/theme_toggle_action.dart';
 import 'package:practice_1/widgets/text_field.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -48,6 +49,9 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: const [
+          ThemeToggleAction(), // добавили кнопку
+        ],
         title: const Text(
           "Профиль",
           style: TextStyle(
