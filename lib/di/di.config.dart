@@ -18,10 +18,10 @@ import 'package:practice_1/domain/repository/position_repository_impl.dart'
     as _i86;
 import 'package:practice_1/domain/usecases/get_position_by_id.dart' as _i167;
 import 'package:practice_1/domain/usecases/get_positions.dart' as _i763;
-import 'package:practice_1/pages/myHomePage/block/detail/detail_bloc.dart'
-    as _i853;
-import 'package:practice_1/pages/myHomePage/block/my_home/my_home_bloc.dart'
-    as _i290;
+import 'package:practice_1/pages/myHomePage/bloc/detail/detail_bloc.dart'
+    as _i266;
+import 'package:practice_1/pages/myHomePage/bloc/my_home/my_home_bloc.dart'
+    as _i926;
 import 'package:practice_1/theme/theme_cubit.dart' as _i1044;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -42,11 +42,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i763.GetPositions>(
       () => _i763.GetPositions(gh<_i876.PositionRepository>()),
     );
-    gh.factory<_i290.MyHomeBloc>(
-      () => _i290.MyHomeBloc(gh<_i763.GetPositions>()),
+    gh.factory<_i926.MyHomeBloc>(
+      () => _i926.MyHomeBloc(gh<_i763.GetPositions>()),
     );
-    gh.factory<_i853.DetailBloc>(
-      () => _i853.DetailBloc(gh<_i167.GetPositionById>()),
+    gh.factory<_i266.DetailBloc>(
+      () => _i266.DetailBloc(gh<_i167.GetPositionById>()),
     );
     return this;
   }

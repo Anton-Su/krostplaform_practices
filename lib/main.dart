@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practice_1/Di/di.dart';
 import 'package:practice_1/pages/loading_page.dart';
 import 'package:practice_1/pages/login_page.dart';
-import 'package:practice_1/pages/myHomePage/block/my_home/my_home_bloc.dart';
+import 'package:practice_1/pages/myHomePage/bloc/my_home/my_home_bloc.dart';
 import 'package:practice_1/pages/myHomePage/my_home_page.dart';
 import 'package:practice_1/pages/profile_page.dart';
 import 'package:practice_1/pages/register_page.dart';
