@@ -10,6 +10,7 @@ import 'package:practice_1/pages/register_page.dart';
 import 'package:practice_1/pages/detail_page.dart';
 import 'package:practice_1/routes.dart';
 
+// заглушка для 9
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
