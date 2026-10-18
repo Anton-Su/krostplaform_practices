@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practice_1/Di/di.dart';
-import 'package:practice_1/data/database.dart';
 import 'package:practice_1/pages/loading_page.dart';
 import 'package:practice_1/pages/login_page.dart';
 import 'package:practice_1/pages/myHomePage/block/my_home/my_home_bloc.dart';
