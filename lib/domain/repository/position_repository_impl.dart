@@ -13,7 +13,7 @@ class PositionRepositoryImpl implements PositionRepository {
   Future<List<Position>> getPositions() async {
     final rows = await _db.select(_db.positions).get();
     await Future.delayed(const Duration(milliseconds: 2000));
-    return rows.map(_toEntity).toList();
+    return rows.map(toEntity).toList();
   }
 
   @override
@@ -22,13 +22,6 @@ class PositionRepositoryImpl implements PositionRepository {
       _db.positions,
     )..where((t) => t.id.equals(id))).getSingleOrNull();
     await Future.delayed(const Duration(milliseconds: 2000));
-    return row == null ? null : _toEntity(row);
+    return row == null ? null : toEntity(row);
   }
-
-  Position _toEntity(PositionRow row) => Position(
-    id: row.id,
-    briefDescription: row.briefDescription,
-    description: row.description,
-    path: row.path,
-  );
 }
